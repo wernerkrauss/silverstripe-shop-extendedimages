@@ -9,6 +9,7 @@ use SilverStripe\Forms\FieldList;
 use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataExtension;
+use SilverStripe\ORM\DataList;
 
 
 /**
@@ -34,14 +35,14 @@ class MultipleProductImages extends DataExtension
     /**
      * @param FieldList $fields
      */
-    function updateCMSFields(FieldList $fields)
+    public function updateCMSFields(FieldList $fields)
     {
         $newfields = [
             new SortableUploadField('AdditionalImages', _t('SHOPEXTENDEDIMAGES.AdditionImages', 'Additional Images')),
             new LiteralField('additionalimagesinstructions', '<p>' . _t('SHOPEXTENDEDIMAGES.Instructions',
                     'You can change the order of the Additional Images by clicking and dragging on the image thumbnail.') . '</p>'),
         ];
-        if ($fields->hasTabset()) {
+        if ($fields->hasTabSet()) {
             $fields->addFieldsToTab('Root.Images', $newfields);
         } else {
             foreach ($newfields as $field) {
@@ -54,9 +55,9 @@ class MultipleProductImages extends DataExtension
      * Combines the main image and the secondary images
      * @return ArrayList
      */
-    function AllImages()
+    public function AllImages()
     {
-        $list = new ArrayList($this->owner->AdditionalImages()->sort('SortOrder')->toArray());
+        $list = new ArrayList($this->SortedAdditionalImages()->toArray());
         $main = $this->owner->Image();
         if ($main && $main->exists()) {
             $list->unshift($main);
@@ -67,7 +68,7 @@ class MultipleProductImages extends DataExtension
     /**
      * @return DataList
      */
-    function SortedAdditionalImages()
+    public function SortedAdditionalImages()
     {
         $list = $this->owner->AdditionalImages()->sort('SortOrder');
         return $list;
