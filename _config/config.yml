@@ -1,6 +1,6 @@
 ---
 Name: extendedimages
 ---
-Product:
+SilverShop\Page\Product:
   extensions:
-    - MultipleProductImages
+    - SilverShop\ExtendedImages\MultipleProductImages
