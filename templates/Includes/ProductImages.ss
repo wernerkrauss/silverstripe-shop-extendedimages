@@ -14,10 +14,10 @@
 <% if $SortedAdditionalImages.Count %>
 	<div id="ProductImageGallery">
 		<% if $Image %>
-			<a href="javascript:;" data-image="$Image.ContentImage.URL" data-zoom-image="$Image.LargeImage.URL" class="active"><img src="$Image.Thumbnail.URL" /></a>
+			<a href="javascript:;" data-image="$Image.ContentImage.URL" data-zoom-image="$Image.LargeImage.URL" class="active"><img src="$Image.getThumbnail.URL" /></a>
 		<% end_if %>
 		<% loop $SortedAdditionalImages %>
-			<a href="javascript:;" data-image="$ContentImage.URL" data-zoom-image="$LargeImage.URL"><img src="$Thumbnail.URL" /></a>
+			<a href="javascript:;" data-image="$ContentImage.URL" data-zoom-image="$LargeImage.URL"><img src="$getThumbnail.URL" /></a>
 		<% end_loop %>
 	</div>
 <% end_if %>
