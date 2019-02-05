@@ -12,6 +12,10 @@ class MultipleProductImages extends DataExtension
 	private static $many_many = array(
 		'AdditionalImages' => 'Image',
 	);
+    
+    privat static $owns = [
+        'AdditionalImages'
+    ];
 
 	private static $many_many_extraFields = array(
 		'AdditionalImages' => array(
