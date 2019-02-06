@@ -1,7 +1,7 @@
-<% require javascript(markguinn/silverstripe-shop-extendedimages: thirdparty/jquery/jquery.min.js) %>
-<% require javascript(markguinn/silverstripe-shop-extendedimages: thirdparty/elevatezoom/jquery.elevatezoom.js) %>
-<% require javascript(markguinn/silverstripe-shop-extendedimages: javascript/ProductImages.js) %>
-<% require css(markguinn/silverstripe-shop-extendedimages: css/ProductImages.css) %>
+<% require javascript(markguinn/silverstripe-shop-extendedimages:thirdparty/jquery/jquery.min.js) %>
+<% require javascript(markguinn/silverstripe-shop-extendedimages:thirdparty/elevatezoom/jquery.elevatezoom.js) %>
+<% require javascript(markguinn/silverstripe-shop-extendedimages:javascript/ProductImages.js) %>
+<% require css(markguinn/silverstripe-shop-extendedimages:css/ProductImages.css) %>
 
 <div id="ProductImageWrapper">
 	<% if $Image.ContentImage %>
