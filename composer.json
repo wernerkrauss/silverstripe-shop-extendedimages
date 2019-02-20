@@ -22,13 +22,19 @@
         "installer-name": "shop_extendedimages",
         "branch-alias": {
             "dev-master": "1.0.x-dev"
-        }
+        },
+        "expose": [
+            "css",
+            "javascript",
+            "thirdparty"
+        ]
     },
     "require": {
         "silverstripe/framework": "^4.0",
         "silvershop/core": "~3.0",
         "bummzack/sortablefile": "^2.0"
     },
+
     "autoload": {
         "SilverShop\\ExtendedImages": "src"
     }
