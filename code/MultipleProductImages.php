@@ -32,6 +32,10 @@ class MultipleProductImages extends DataExtension
         ],
     ];
 
+    private static $owns = [
+        'AdditionalImages'
+    ];
+
     /**
      * @param FieldList $fields
      */
