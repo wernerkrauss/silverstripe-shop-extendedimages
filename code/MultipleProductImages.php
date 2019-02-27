@@ -10,6 +10,7 @@ use SilverStripe\Forms\LiteralField;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\ORM\DataExtension;
 use SilverStripe\ORM\DataList;
+use SilverStripe\ORM\SS_List;
 
 
 /**
@@ -35,6 +36,8 @@ class MultipleProductImages extends DataExtension
     private static $owns = [
         'AdditionalImages'
     ];
+
+    private static $add_additional_images_to_sitemap = false;
 
     /**
      * @param FieldList $fields
@@ -78,4 +81,28 @@ class MultipleProductImages extends DataExtension
         return $list;
     }
 
+    /**
+     * @param SS_List $list
+     */
+    public function updateImagesForSitemap(SS_List $list)
+    {
+        $cachedImages = [];
+
+        if (!$this->addImagesToSitemap()) {
+            return;
+        }
+
+        foreach ($this->owner->AdditionalImages() as $image) {
+            if ($image && $image->exists() && !isset($cachedImages[$image->ID])) {
+                $cachedImages[$image->ID] = true;
+
+                $list->push($image);
+            }
+        }
+    }
+
+    private function addImagesToSitemap()
+    {
+        return $this->owner->config()->get('add_additional_images_to_sitemap');
+    }
 }
